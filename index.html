@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>doble falta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SCANLINES overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav-logo">df</span>
+    <ul class="nav-links">
+      <li><a href="#apps">apps</a></li>
+      <li><a href="#contacto">hablemos</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="pixel-decoration top-left" aria-hidden="true">
+        <div class="pixel-star"></div>
+      </div>
+      <div class="pixel-decoration top-right" aria-hidden="true">
+        <div class="pixel-star"></div>
+      </div>
+
+      <p class="hero-label">[ estudio de apps ]</p>
+      <h1 class="hero-title">doble<br/>falta</h1>
+      <p class="hero-tagline">
+        Hacemos apps.<br/>
+        Unas sirven.<br/>
+        Las otras quizás,<br/>
+        <span class="accent">pero al menos hay salud.</span>
+      </p>
+
+      <a href="#apps" class="btn-pixel">ver proyectos ▼</a>
+
+    </div>
+
+    <div class="pixel-character" aria-hidden="true">
+      <canvas id="character-canvas"></canvas>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span>▼ ▼ ▼</span>
+    </div>
+  </section>
+
+  <!-- APPS -->
+  <section class="apps" id="apps">
+    <div class="section-header">
+      <h2 class="section-title">// proyectos</h2>
+      <p class="section-sub">ejemplos de lo que podemos hacer</p>
+    </div>
+
+    <div class="apps-grid">
+
+      <article class="app-card">
+        <div class="card-icon">☂️</div>
+        <h3 class="card-title">¿Necesito Paraguas?</h3>
+        <p class="card-desc">Te dice si necesitas paraguas. Nada más. Sin gráficas de presión atmosférica que nadie entiende.</p>
+        <div class="card-tags">
+          <span>utilidad</span>
+          <span>minimalismo</span>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <div class="card-icon">🤥</div>
+        <h3 class="card-title">Generador de Excusas</h3>
+        <p class="card-desc">Excusas creíbles para llegar tarde, no ir al gym, o no contestar mensajes. Con nivel de credibilidad incluido.</p>
+        <div class="card-tags">
+          <span>humor</span>
+          <span>productividad inversa</span>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <div class="card-icon">📅</div>
+        <h3 class="card-title">¿Era un Email?</h3>
+        <p class="card-desc">Analiza la descripción de tu reunión y te dice con honestidad brutal si podría haber sido un email.</p>
+        <div class="card-tags">
+          <span>oficina</span>
+          <span>terapia</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="section-header">
+      <h2 class="section-title">// hablemos</h2>
+    </div>
+
+    <div class="contact-center">
+      <a href="mailto:lopezrivasdaniel@gmail.com" class="btn-pixel big">escribir un correo →</a>
+      <p class="contact-note">Respondo rápido si la idea me da risa.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">doble falta</span>
+      <span class="footer-copy">© 2026 — hecho con cafeína y dudas</span>
+      <div class="footer-pixels" aria-hidden="true">
+        <span>■</span><span>■</span><span>■</span><span>■</span><span>■</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="logo.js"></script>
+</body>
+</html>
