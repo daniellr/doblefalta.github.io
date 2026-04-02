@@ -4,124 +4,352 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>doble falta</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Variables ─────────────────────────────────────────── */
+    :root {
+      --bg:          #FAFAF8;
+      --text:        #111111;
+      --muted:       #777770;
+      --border:      #DDDDD8;
+      --border-dark: #111111;
+      --accent:      #E8F000;
+      --font:        'Courier Prime', 'Courier New', Courier, monospace;
+      --max:         1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Nav ────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── Sections ───────────────────────────────────────────── */
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 120px 40px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .hero-label {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-title {
+      font-size: clamp(64px, 10vw, 110px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+    .hero-body {
+      font-size: 20px;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .hero-body em {
+      font-style: italic;
+      color: var(--text);
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border: 2px solid var(--border-dark);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn:hover {
+      background: var(--text);
+      color: var(--accent);
+    }
+
+    /* ─── Projects ───────────────────────────────────────────── */
+    .projects-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+    .card {
+      padding: 32px 28px;
+      border-right: 1px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.18s ease, background 0.18s;
+      cursor: default;
+    }
+    .card:last-child { border-right: none; }
+    .card:hover {
+      transform: translateY(-3px);
+      background: #F5F5F2;
+    }
+    .card-emoji {
+      font-size: 28px;
+      line-height: 1;
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .card-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-transform: lowercase;
+    }
+
+    /* ─── Contact ────────────────────────────────────────────── */
+    .contact {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 100px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .contact-heading {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .contact-note {
+      font-size: 15px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .contact-ig {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+    .contact-ig:hover { color: var(--text); }
+    .btn-accent {
+      display: inline-block;
+      padding: 13px 26px;
+      border: 2px solid var(--border-dark);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      background: var(--accent);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      letter-spacing: 0.02em;
+      align-self: flex-start;
+    }
+    .btn-accent:hover {
+      background: var(--text);
+      color: var(--accent);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-logo {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .footer-copy {
+      text-align: center;
+    }
+
+    /* ─── Scroll animations ──────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 800px) {
+      .nav { padding: 14px 20px; }
+      .hero { padding: 80px 20px 60px; gap: 22px; }
+      .section { padding: 70px 20px; }
+      .contact { padding: 70px 20px; }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        border: 1px solid var(--border);
+      }
+      .card {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .card:last-child { border-bottom: none; }
+      .footer {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 24px 20px;
+      }
+      .footer-copy { text-align: left; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- SCANLINES overlay -->
-  <div class="scanlines" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav">
     <span class="nav-logo">df</span>
     <ul class="nav-links">
-      <li><a href="#apps">apps</a></li>
       <li><a href="#contacto">hablemos</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-inner">
-      <div class="pixel-decoration top-left" aria-hidden="true">
-        <div class="pixel-star"></div>
-      </div>
-      <div class="pixel-decoration top-right" aria-hidden="true">
-        <div class="pixel-star"></div>
-      </div>
-
-      <p class="hero-label">[ estudio de apps ]</p>
-      <h1 class="hero-title">doble<br/>falta</h1>
-      <p class="hero-tagline">
-        Hacemos apps.<br/>
-        Unas sirven.<br/>
-        Las otras quizás,<br/>
-        <span class="accent">pero al menos hay salud.</span>
-      </p>
-
-      <a href="#apps" class="btn-pixel">ver proyectos ▼</a>
-
-    </div>
-
-    <div class="pixel-character" aria-hidden="true">
-      <canvas id="character-canvas"></canvas>
-    </div>
-
-    <div class="scroll-hint" aria-hidden="true">
-      <span>▼ ▼ ▼</span>
-    </div>
+  <section class="hero">
+    <p class="hero-label reveal">estudio de apps</p>
+    <h1 class="hero-title reveal">doble<br/>falta</h1>
+    <p class="hero-body reveal">
+      Hacemos apps y proyectos creativos.<br/>
+      <em>A veces nos tiramos sus chistecitos también.</em>
+    </p>
+    <a href="#contacto" class="btn reveal">hablemos ↓</a>
   </section>
 
-  <!-- APPS -->
-  <section class="apps" id="apps">
-    <div class="section-header">
-      <h2 class="section-title">// proyectos</h2>
-      <p class="section-sub">ejemplos de lo que podemos hacer</p>
-    </div>
-
-    <div class="apps-grid">
-
-      <article class="app-card">
-        <div class="card-icon">☂️</div>
-        <h3 class="card-title">¿Necesito Paraguas?</h3>
-        <p class="card-desc">Te dice si necesitas paraguas. Nada más. Sin gráficas de presión atmosférica que nadie entiende.</p>
-        <div class="card-tags">
-          <span>utilidad</span>
-          <span>minimalismo</span>
-        </div>
-      </article>
-
-      <article class="app-card">
-        <div class="card-icon">🤥</div>
-        <h3 class="card-title">Generador de Excusas</h3>
-        <p class="card-desc">Excusas creíbles para llegar tarde, no ir al gym, o no contestar mensajes. Con nivel de credibilidad incluido.</p>
-        <div class="card-tags">
-          <span>humor</span>
-          <span>productividad inversa</span>
-        </div>
-      </article>
-
-      <article class="app-card">
-        <div class="card-icon">📅</div>
-        <h3 class="card-title">¿Era un Email?</h3>
-        <p class="card-desc">Analiza la descripción de tu reunión y te dice con honestidad brutal si podría haber sido un email.</p>
-        <div class="card-tags">
-          <span>oficina</span>
-          <span>terapia</span>
-        </div>
-      </article>
-
-    </div>
-  </section>
+  <hr class="divider" />
 
   <!-- CONTACTO -->
-  <section class="contacto" id="contacto">
-    <div class="section-header">
-      <h2 class="section-title">// hablemos</h2>
-    </div>
-
-    <div class="contact-center">
-      <a href="mailto:lopezrivasdaniel@gmail.com" class="btn-pixel big">escribir un correo →</a>
-      <p class="contact-note">Respondo rápido si la idea me da risa.</p>
-    </div>
+  <section class="contact" id="contacto">
+    <p class="section-title reveal">hablemos</p>
+    <h2 class="contact-heading reveal">¿Tienes<br/>una idea?</h2>
+    <a href="mailto:daniel@doblefalta.dev" class="btn-accent reveal">escribir un correo →</a>
+    <p class="contact-note reveal">Respondo rápido si la idea me da risa.</p>
+    <a href="https://instagram.com/daniellr" class="contact-ig reveal" target="_blank" rel="noopener">instagram → @daniellr</a>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-inner">
-      <span class="footer-logo">doble falta</span>
-      <span class="footer-copy">© 2026 — hecho con cafeína y dudas</span>
-      <div class="footer-pixels" aria-hidden="true">
-        <span>■</span><span>■</span><span>■</span><span>■</span><span>■</span>
-      </div>
-    </div>
+    <span class="footer-logo">doble falta</span>
+    <span class="footer-copy">© 2026 — hecho con cafeína y dudas</span>
+    <span></span>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="logo.js"></script>
+  <script>
+    // Mostrar elementos ya visibles inmediatamente; animar el resto al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        // Ya visible al cargar — mostrar con stagger mínimo
+        setTimeout(() => el.classList.add('visible'), i * 80);
+      } else {
+        observer.observe(el);
+      }
+    });
+  </script>
+
 </body>
 </html>
