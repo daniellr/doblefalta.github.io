@@ -3,190 +3,445 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>doble falta</title>
+  <title>Doble Falta SpA — estudio de apps iOS</title>
+  <meta name="description" content="Doble Falta SpA es un estudio independiente de desarrollo de apps para iOS basado en Santiago, Chile." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── Variables ─────────────────────────────────────── */
     :root {
-      --bg:     #FAFAF8;
-      --text:   #111111;
-      --muted:  #888882;
-      --border: #DDDDD8;
-      --font:   'Courier Prime', 'Courier New', Courier, monospace;
+      --bg:       #FAFAF8;
+      --text:     #111111;
+      --muted:    #666666;
+      --border:   #E5E5E0;
+      --accent:   #E8F000;
+      --font:     'Courier Prime', 'Courier New', Courier, monospace;
+      --max:      680px;
     }
 
+    /* ── Reset ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      height: 100%;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
-      min-height: 100dvh;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    /* ── Nav ── */
+    /* ── Navbar ────────────────────────────────────────── */
     .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 48px;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
+      padding: 18px 40px;
     }
     .nav-logo {
       font-weight: 700;
       font-size: 15px;
+      color: var(--accent);
+      letter-spacing: 0.02em;
     }
-
-    /* ── Main area ── */
-    main {
-      flex: 1;
+    .nav-links {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 64px 48px 48px;
-      max-width: 900px;
-      width: 100%;
+      gap: 28px;
     }
-
-    /* ── Hero ── */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .hero-label {
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .nav-links a {
+      font-size: 14px;
       color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Sections ──────────────────────────────────────── */
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 40px;
+      display: block;
+    }
+
+    /* ── Hero ──────────────────────────────────────────── */
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 100px 40px 80px;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
     }
     .hero-title {
-      font-size: clamp(68px, 10vw, 108px);
+      font-size: clamp(60px, 10vw, 96px);
       font-weight: 700;
       line-height: 0.92;
       letter-spacing: -0.02em;
+      margin-bottom: 28px;
     }
     .hero-body {
       font-size: 19px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
       max-width: 480px;
+      margin-bottom: 36px;
     }
     .hero-body em {
       font-style: italic;
       color: var(--text);
     }
 
-    /* ── Contact ── */
-    .contact {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .contact-links {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .contact-links a {
+    /* ── CTA button ────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 2px solid var(--text);
+      font-family: var(--font);
       font-size: 15px;
       font-weight: 700;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn:hover {
+      background: var(--text);
+      color: var(--accent);
+    }
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--text);
+    }
+    .btn-primary:hover {
+      background: var(--text);
+      color: var(--accent);
+    }
+
+    /* ── App card ──────────────────────────────────────── */
+    .app-card {
+      border: 1px solid var(--border);
+      padding: 32px;
+      transition: transform 0.18s ease;
+      margin-bottom: 20px;
+    }
+    .app-card:hover { transform: translateY(-2px); }
+
+    .app-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .app-icon {
+      font-size: 40px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .app-icon img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .app-meta { flex: 1; }
+    .app-name {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .app-status {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      border: 1px solid var(--text);
+      padding: 2px 7px;
+      display: inline-block;
+    }
+    .app-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+    .app-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .app-link {
+      font-size: 14px;
+      font-weight: 700;
       text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-color: var(--border);
-      transition: text-decoration-color 0.15s;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
     }
-    .contact-links a:hover {
-      text-decoration-color: var(--text);
-    }
-    .contact-note {
+    .app-link:hover { color: var(--muted); }
+
+    .apps-more {
       font-size: 14px;
       color: var(--muted);
       font-style: italic;
     }
 
-    /* ── Footer ── */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 18px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 13px;
+    /* ── Sobre ─────────────────────────────────────────── */
+    .sobre-body {
+      font-size: 17px;
+      line-height: 1.75;
       color: var(--muted);
-      flex-shrink: 0;
     }
-    .footer-logo {
-      font-weight: 700;
-      color: var(--text);
+    .sobre-body p + p { margin-top: 20px; }
+    .sobre-body strong { color: var(--text); font-weight: 700; }
+
+    /* ── Hablemos ──────────────────────────────────────── */
+    .hablemos-body {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+    .hablemos-email {
+      display: block;
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 16px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .hablemos-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
     }
 
-    /* ── Reveal ── */
+    /* ── Footer ────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .footer-center {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .footer-squares {
+      display: flex;
+      gap: 5px;
+      justify-content: flex-end;
+    }
+    .sq {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+    }
+    .footer-legal {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-legal a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ── Reveal animation ──────────────────────────────── */
     .reveal {
       opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ── Mobile ── */
-    @media (max-width: 600px) {
-      .nav    { padding: 16px 24px; }
-      main    { padding: 48px 24px 36px; }
-      .footer { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 4px; }
-      .contact-links { gap: 20px; }
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .nav        { padding: 14px 20px; }
+      .nav-links  { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+
+      .hero       { padding: 64px 20px 56px; }
+      .section    { padding: 56px 20px; }
+
+      .app-card   { padding: 24px 20px; }
+      .app-card-top { gap: 14px; }
+
+      .footer      { padding: 24px 20px; }
+      .footer-top  { grid-template-columns: 1fr; gap: 8px; }
+      .footer-center { text-align: left; }
+      .footer-squares { justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="nav">
     <span class="nav-logo">df</span>
+    <ul class="nav-links">
+      <li><a href="#apps">apps</a></li>
+      <li><a href="#sobre">sobre</a></li>
+      <li><a href="#hablemos">hablemos</a></li>
+    </ul>
   </nav>
 
-  <main>
-    <section class="hero">
-      <p class="hero-label reveal">estudio de apps</p>
-      <h1 class="hero-title reveal">doble<br/>falta</h1>
-      <p class="hero-body reveal">
-        Hago apps y proyectos creativos.<br/>
-        <em>A veces me tiro sus chistecitos también.</em>
-      </p>
-    </section>
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow reveal">[ estudio de apps iOS ]</p>
+    <h1 class="hero-title reveal">doble<br/>falta</h1>
+    <p class="hero-body reveal">
+      Hago apps y proyectos creativos.<br/>
+      <em>A veces me tiro sus chistecitos también.</em>
+    </p>
+    <a href="#apps" class="btn reveal">ver apps ↓</a>
+  </section>
 
-    <section class="contact">
-      <div class="contact-links reveal">
-        <a href="https://instagram.com/daniellr" target="_blank" rel="noopener">instagram → @daniellr</a>
-        <a href="mailto:daniel@doblefalta.dev">correo → daniel@doblefalta.dev</a>
+  <hr class="divider" />
+
+  <!-- APPS -->
+  <section class="section" id="apps">
+    <span class="section-label reveal">// apps</span>
+    <p class="sobre-body reveal" style="margin-bottom: 32px; font-style: italic;">publicadas en el App Store</p>
+
+    <div class="app-card reveal">
+      <div class="app-card-top">
+        <div class="app-icon">🍽️</div>
+        <div class="app-meta">
+          <h3 class="app-name">Yendo Pa Afuera</h3>
+          <span class="app-status">Disponible en App Store</span>
+        </div>
       </div>
-      <p class="contact-note reveal">Respondo rápido si es para algo chistoso.</p>
-    </section>
-  </main>
+      <p class="app-desc">
+        App para descubrir lugares ricos en tu ciudad. Con recomendaciones curadas por gente que realmente conoce los lugares. Sin reseñas de trolls, sin spam.
+      </p>
+      <div class="app-tags">
+        <span class="tag">ios</span>
+        <span class="tag">swiftui</span>
+        <span class="tag">latam</span>
+      </div>
+      <a href="https://yendopaafuera.com" target="_blank" rel="noopener" class="app-link">
+        yendopaafuera.com →
+      </a>
+    </div>
 
+    <p class="apps-more reveal">Más apps en camino.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SOBRE -->
+  <section class="section" id="sobre">
+    <span class="section-label reveal">// sobre</span>
+    <div class="sobre-body">
+      <p class="reveal">
+        <strong>Doble Falta SpA</strong> es un estudio independiente de desarrollo de apps para iOS, basado en Santiago, Chile. Algunas útiles, otras absurdas, todas hechas con cariño.
+      </p>
+      <p class="reveal">
+        Detrás de Doble Falta estoy yo, <strong>Daniel López Rivas</strong>, fundador y único desarrollador del estudio junto a Claudito.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- HABLEMOS -->
+  <section class="section" id="hablemos">
+    <span class="section-label reveal">// hablemos</span>
+    <p class="hablemos-body reveal">
+      ¿Tienes una idea, una colaboración, o necesitas que te arme una app? Escríbeme.
+    </p>
+    <a href="mailto:daniel@doblefalta.dev" class="btn btn-primary reveal">
+      escribir un correo →
+    </a>
+    <a href="mailto:daniel@doblefalta.dev" class="hablemos-email reveal">
+      daniel@doblefalta.dev
+    </a>
+    <p class="hablemos-note reveal">Respondo rápido si la idea me da risa.</p>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer-logo">doble falta</span>
-    <span>© 2026 — hecho con cafeína y dudas</span>
+    <div class="footer-top">
+      <span class="footer-logo">doble falta SpA</span>
+      <span class="footer-center">© 2026 — Santiago, Chile</span>
+      <div class="footer-squares">
+        <div class="sq" style="background:#00D2FF"></div>
+        <div class="sq" style="background:#FF2D78"></div>
+        <div class="sq" style="background:#E8F000"></div>
+        <div class="sq" style="background:#00C97A"></div>
+      </div>
+    </div>
+    <p class="footer-legal">
+      Doble Falta SpA · Santiago de Chile ·
+      <a href="mailto:daniel@doblefalta.dev">daniel@doblefalta.dev</a>
+    </p>
   </footer>
 
   <script>
+    // Scroll reveal con IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
     document.querySelectorAll('.reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), 80 + i * 90);
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        setTimeout(() => el.classList.add('visible'), 60 + i * 80);
+      } else {
+        observer.observe(el);
+      }
     });
   </script>
 
