@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacidad de trackingcompras</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #FAFAF8;
+      --text:   #111111;
+      --muted:  #666666;
+      --border: #E5E5E0;
+      --font:   'Courier Prime', 'Courier New', Courier, monospace;
+      --max:    680px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { max-width: var(--max); margin: 0 auto; padding: 64px 24px; }
+    h1 { font-size: 1.6rem; line-height: 1.3; margin-bottom: 32px; }
+    p { margin-bottom: 20px; }
+    strong { font-weight: 700; }
+    a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    .fecha { color: var(--muted); border-top: 1px solid var(--border); padding-top: 20px; margin-top: 32px; }
+    .volver { display: inline-block; margin-bottom: 40px; color: var(--muted); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="volver" href="/">Doble Falta SpA</a>
+    <h1>Privacidad de trackingcompras</h1>
+
+    <p>trackingcompras es una app de uso personal, hecha por Doble Falta SpA para su fundador. No está disponible para otras personas.</p>
+
+    <p><strong>Qué datos usa.</strong> Con permiso de solo lectura de Gmail, la app busca los mails de compras y envíos de una sola cuenta. De esos mails guarda la tienda, los productos, el número de pedido, el código de seguimiento, el courier, las fechas y el identificador del mail. El resto del correo no se guarda.</p>
+
+    <p><strong>Con quién se comparten.</strong> El texto de los mails de compras y envíos se envía a la API de Anthropic para extraer esos datos. Los códigos de seguimiento se envían a Ship24 para consultar su estado. Los datos se guardan en un servidor en Railway, y los avisos se mandan con el servicio de notificaciones de Apple. Nada se vende ni se usa para publicidad.</p>
+
+    <p><strong>Datos de Google.</strong> El uso de la información recibida de las APIs de Google se ajusta a la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de Datos del Usuario de los Servicios de API de Google</a>, incluidos los requisitos de Uso Limitado.</p>
+
+    <p><strong>Cómo borrar los datos.</strong> El acceso a Gmail se quita en <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Los datos guardados se borran escribiendo a <a href="mailto:daniel@doblefalta.dev">daniel@doblefalta.dev</a>.</p>
+
+    <p class="fecha">Actualizada el 22 de octubre de 2026.</p>
+  </main>
+</body>
+</html>
